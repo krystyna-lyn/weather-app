@@ -14,7 +14,7 @@ app.get('/api/weather', async (req, res) => {
     const { city } = req.query;
 
     try {
-        const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.WEATHER_API_KEY}&units=metric`);
+        const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.API_KEY}&q=${city}&days=7`);
 
         if (!response.ok) {
             console.error('weather API response not ok: ', response.statusText);

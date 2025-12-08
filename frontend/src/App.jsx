@@ -1,66 +1,66 @@
+import { useEffect, useState } from 'react';
+import './App.css';
+import { getWeatherData } from './api/api';
+import CurrentWeather from './components/CurrentWeather';
+import HourlyForecast from './components/HourlyForecast';
+import WeeklyForecast from './components/WeeklyForecast';
+import SearchBar from './components/SearchBar';
 
-import SearchBar from './components/SearchBar'
-import CurrentWeather from './components/CurrentWeather'
-import HourlyForeCast from './components/HourlyForeCast'
-import WeeklyForecast from './components/WeeklyForecast'
-import { useEffect } from 'react'
-import { useState } from 'react'
-import './App.css'
-import { fetchWeatherData as getWeatherData } from './api'
 
 function App() {
-    const [city, setCity] = useState('');
+    const [city, setCity] = useState('Auckland');
     const [weatherData, setWeatherData] = useState(null);
-    const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+
 
     useEffect(() => {
+
         const fetchWeather = async () => {
             setLoading(true);
-            setError('');
-
             try {
                 const data = await getWeatherData(city);
-                const [mintemp_c, maxtemp_c] = data.forecast.forecastday[0].day;
+                const { mintemp_c } = data.forecast.forecastday[0].day;
+                const { maxtemp_c } = data.forecast.forecastday[0].day;
 
                 setWeatherData({
                     current: { ...data.current, mintemp_c, maxtemp_c },
-                    hourly: data.forecast.forecastday[0].day,
+                    hourly: data.forecast.forecastday[0].hour,
                     weekly: data.forecast.forecastday.slice(1),
-                    location: data.location
-                })
-
+                    location: data.location,
+                });
+                setError('');
             } catch (err) {
-                setError('Failed to fetch weather data');
+                setError('Error fetching weather data: ' + err.message);
             } finally {
                 setLoading(false);
             }
-        }
-        fetchWeather();
-    }, [city])
+        };
 
+        fetchWeather();
+    }, [city]);
+
+    console.log(weatherData);
 
     return (
-        <div className="App">
-            <div className='container'>
-                <SearchBar onSearch={setCity}>
-                    {loading && <p>Loading...</p>}
-                    {error && <p className="error">{error}</p>}
-                    {weatherData && (
-                        <>
-                            <CurrentWeather data={weatherData.current}
-                                location={weatherData.location}
-                            />
-
-                            <HourlyForeCast data={weatherData.hourly} />
-                            <WeeklyForecast data={weatherData.weekly} />
-                        </>
-                    )}
-
-                </SearchBar>
+        <div className='app'>
+            <div className="container">
+                <SearchBar onSearch={setCity} />
+                {loading && <p>Loading...</p>}
+                {error && <p>{error}</p>}
+                {weatherData && (
+                    <>
+                        <CurrentWeather
+                            data={weatherData.current}
+                            location={weatherData.location}
+                        />
+                        <HourlyForecast data={weatherData.hourly} />
+                        <WeeklyForecast data={weatherData.weekly} />
+                    </>
+                )}
             </div>
         </div>
-    )
+    );
 }
 
 export default App;

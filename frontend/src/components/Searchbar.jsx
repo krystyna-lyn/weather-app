@@ -1,30 +1,30 @@
-import React from 'react'
+import { useState } from 'react';
 
-const Searchbar = ({ onSearch }) => {
+
+const SearchBar = ({ onSearch }) => {
     const [city, setCity] = useState('');
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         if (city) {
             onSearch(city);
             setCity('');
         }
+    };
 
-    }
     return (
         <form onSubmit={handleSubmit}>
-            <span className='searchbar-icon'>🔎</span>
+            <span className="search-icon">🔍</span>
             <input
-                type='text'
-                className='search-input'
+                className="search-input"
+                type="text"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
-                placeholder="Sydney"
+                placeholder="Auckland"
                 required
             />
         </form>
+    );
+};
 
-    )
-}
-
-export default Searchbar
+export default SearchBar;

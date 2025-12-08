@@ -5,7 +5,15 @@ import CurrentWeather from './components/CurrentWeather';
 import HourlyForecast from './components/HourlyForecast';
 import WeeklyForecast from './components/WeeklyForecast';
 import SearchBar from './components/SearchBar';
+import { parse } from 'date-fns';
+import './components/Searchbar.css';
 
+const getGradientClass = (hour) => {
+    if (hour >= 6 && hour < 12) return 'bg-sunrise'
+    if (hour >= 12 && hour < 18) return 'bg-day'
+    if (hour >= 18 && hour < 21) return 'bg-sunset'
+    return 'bg-night'
+}
 
 function App() {
     const [city, setCity] = useState('Auckland');
@@ -13,6 +21,18 @@ function App() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
+
+    const hour = weatherData?.location?.localtime
+        ? parse(
+            weatherData.location.localtime,
+            'yyyy-MM-dd HH:mm',
+            new Date()
+        ).getHours()
+        : new Date().getHours();
+
+    console.log(hour);
+
+    const gradientClass = getGradientClass(hour);
 
     useEffect(() => {
 
@@ -43,7 +63,7 @@ function App() {
     console.log(weatherData);
 
     return (
-        <div className='app'>
+        <div className={`app ${gradientClass}`}>
             <div className="container">
                 <SearchBar onSearch={setCity} />
                 {loading && <p>Loading...</p>}
@@ -59,7 +79,7 @@ function App() {
                     </>
                 )}
             </div>
-        </div>
+        </div >
     );
 }
 

@@ -1,0 +1,30 @@
+.bg-sunrise {
+    background: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%);
+}
+
+.bg-day {
+    background: linear-gradient(135deg, #89F7FE 0%, #66A6FF 100%);
+}
+
+.bg-sunset {
+    background: linear-gradient(135deg, #FFA17F 0%, #002230 100%);
+}
+
+.bg-night {
+    background: linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%);
+}
+
+.app {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+}

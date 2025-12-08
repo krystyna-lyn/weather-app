@@ -1,0 +1,24 @@
+form {
+    align-items: center;
+    max-width: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 8px 12px;
+
+    border-radius: 26px;
+    background: rgba(50, 50, 50, 0.3);
+    border: 1px solid rgba(50, 50, 50, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 8px;
+    background: transparent;
+}
+
+.search-icon {
+    cursor: pointer;
+}

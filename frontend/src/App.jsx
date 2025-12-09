@@ -16,7 +16,7 @@ const getGradientClass = (hour) => {
 }
 
 function App() {
-    const [city, setCity] = useState('Auckland');
+    const [city, setCity] = useState('Sydney');
     const [weatherData, setWeatherData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');

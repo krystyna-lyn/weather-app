@@ -14,12 +14,10 @@ const HourlyForeCast = ({ data }) => {
                         <img src={hour.condition.icon} className='hour-icon' alt='icon' />
                         <div className='hour-temp'>{Math.round(hour.temp_c)}°C</div>
 
-                        <div className='hour-rain'>{hour.chance_of_rain}%</div>
+                        <div className='hour-rain'>💧 {hour.chance_of_rain}%</div>
                     </div>
                 )
             })}
-
-
         </div>
     )
 }

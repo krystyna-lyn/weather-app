@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import { getWeatherData } from './api/api';
 import CurrentWeather from './components/CurrentWeather';
-import HourlyForecast from './components/HourlyForecast';
+import HourlyForecast from './components/HourlyForeCast';
 import WeeklyForecast from './components/WeeklyForecast';
 import SearchBar from './components/SearchBar';
 import { parse } from 'date-fns';

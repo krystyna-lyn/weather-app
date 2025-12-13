@@ -7,6 +7,7 @@ import WeeklyForecast from './components/WeeklyForecast';
 import SearchBar from './components/SearchBar';
 import { parse } from 'date-fns';
 import './components/Searchbar.css';
+import Card from './components/Card';
 
 const getGradientClass = (hour) => {
     if (hour >= 6 && hour < 12) return 'bg-sunrise'
@@ -16,7 +17,7 @@ const getGradientClass = (hour) => {
 }
 
 function App() {
-    const [city, setCity] = useState('Sydney');
+    const [city, setCity] = useState('Tenerife');
     const [weatherData, setWeatherData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -60,7 +61,6 @@ function App() {
         fetchWeather();
     }, [city]);
 
-    console.log(weatherData);
 
     return (
         <div className={`app ${gradientClass}`}>
@@ -74,6 +74,7 @@ function App() {
                             data={weatherData.current}
                             location={weatherData.location}
                         />
+
                         <HourlyForecast data={weatherData.hourly} />
                         <WeeklyForecast data={weatherData.weekly} />
                     </>

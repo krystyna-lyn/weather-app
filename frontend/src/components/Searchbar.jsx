@@ -20,7 +20,7 @@ const SearchBar = ({ onSearch }) => {
                 type="text"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
-                placeholder="Sydney"
+                placeholder="Tenerife"
                 required
             />
         </form>

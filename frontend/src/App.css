@@ -1,9 +1,5 @@
-html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
+@import "tailwindcss";
+
 
 .bg-sunrise {
     background: linear-gradient(135deg, #f3b3c8 0%, #93f2ef 100%);

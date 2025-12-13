@@ -1,4 +1,5 @@
 .current-weather {
+    margin-top: 20px;
     display: flex;
     align-items: center;
     gap: 50px;
@@ -40,6 +41,7 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 200px;
 }
 
 .detail-item {

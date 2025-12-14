@@ -7,7 +7,6 @@ import WeeklyForecast from './components/WeeklyForecast';
 import SearchBar from './components/SearchBar';
 import { parse } from 'date-fns';
 import './components/Searchbar.css';
-import Card from './components/Card';
 
 const getGradientClass = (hour) => {
     if (hour >= 6 && hour < 12) return 'bg-sunrise'

@@ -14,21 +14,21 @@ const WeeklyForecast = ({ data }) => {
                         <div className={`${glassCard} flex-row justify-between items-center mb-2`}
                             key='index'>
 
-                            <div className='text-sm md_text:sm mb-2'>
+                            <div className='w-20 text-sm md:text-sm mb-2'>
                                 {format(parseISO(day.date), 'EEE')}
                             </div>
 
-                            <div className='daily-rain'>💧 {day.day.daily_chance_of_rain}%</div>
+                            <div className='w-20 text-sm md:text-sm text-center'>💧 {day.day.daily_chance_of_rain}%</div>
 
-                            <div className='text-sm md_text:sm mb-2'>
+                            <div className='w-40 flex flex-col items-center text-center text-sm md:text-sm mb-2 mx-4'>
                                 <img src={day.day.condition.icon}
                                     alt={day.day.condition.text}
-                                    className="text-sm md_text:sm mb-2" />
+                                    className="w-8 h-8 mb-4 text-sm md:text-sm" />
 
-                                <span className='text-sm md_text:sm mb-2'>{day.day.condition.text}</span>
+                                <span className='text-sm md:text-sm mb-2'>{day.day.condition.text}</span>
                             </div>
 
-                            <div className='text-sm md_text:sm mb-2'>
+                            <div className='w-28 text-sm md:text-sm mb-2'>
                                 {Math.round(day.day.maxtemp_c)}°C / {Math.round(day.day.mintemp_c)}°C
                             </div>
 

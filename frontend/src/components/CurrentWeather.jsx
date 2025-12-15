@@ -44,10 +44,13 @@ const CurrentWeather = ({ data, location }) => {
     const glassCard = "rounded-2xl border border-white/30 bg-white/10 p-8 shadow-2xl backdrop-blur-xl";
 
     return (
-        <div className="mt-8 mb-8 flex flex-col md:flex-row md:items-stretch gap-8 max-w-5xl mx-auto px-4">
+        <div className="mt-8 mb-8 flex flex-col md:flex-row gap-8 max-w-5xl mx-auto px-4">
+
             {/* Left card */}
-            <div className={`${glassCard} flex flex-col md:flex-row justify-between gap-8 w-full md:min-w-96`}>
-                <div className="flex flex-col justify-between">
+            <div className={`${glassCard} flex flex-col md:flex-row gap-8 w-full md:w-2/3`}>
+
+
+                <div className="flex flex-col items-center">
                     <div>
                         <h2 className="text-2xl font-semibold text-white">{location.name}</h2>
                         <h1 className="text-6xl md:text-7xl font-bold text-white mt-4">
@@ -63,7 +66,7 @@ const CurrentWeather = ({ data, location }) => {
                     </p>
                 </div>
 
-                <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col items-center">
                     <img
                         className="w-24 h-24 md:w-32 md:h-32 drop-shadow-lg"
                         src={condition.icon}
@@ -74,39 +77,40 @@ const CurrentWeather = ({ data, location }) => {
             </div>
 
             {/* Right card */}
-            <div className={`${glassCard} flex flex-col justify-between w-full md:w-96`}>
-                <div className="space-y-8">
-                    <div className="flex justify-between items-center text-lg">
-                        <span className="font-bold text-white">🌬️ Wind</span>
-                        <div className="text-right">
-                            <div className="text-white">{wind_kph} km/h</div>
-                            <small className="text-sm text-white/70">
-                                {getWindDescription(wind_kph)}
-                            </small>
-                        </div>
-                    </div>
+            <div className={`${glassCard} w-60 md:w-110 flex flex-col justify-center space-y-4`}>
 
-                    <div className="flex justify-between items-center text-lg">
-                        <span className="font-bold text-white">💧 Humidity</span>
-                        <div className="text-right">
-                            <div className="text-white">{humidity}%</div>
-                            <small className="text-sm text-white/70">
-                                {getHumDescription(humidity)}
-                            </small>
-                        </div>
-                    </div>
+                {/* Wind */}
+                <div className="flex justify-between items-center">
 
-                    <div className="flex justify-between items-center text-lg">
-                        <span className="font-bold text-white">🔆 UV Index</span>
-                        <div className="text-right">
-                            <div className="text-white">{uv}</div>
-                            <small className="text-sm text-white/70">
-                                {getUvDescription(uv)}
-                            </small>
-                        </div>
+                    <span className="font-bold text-white">🌬️ Wind</span>
+
+
+                    <div className="text-right leading-tight">
+                        <div className="text-white">{wind_kph} km/h</div>
+                        <small className="text-sm text-white/70">{getWindDescription(wind_kph)}</small>
                     </div>
                 </div>
+
+                {/* Humidity */}
+                <div className="flex justify-between items-center">
+                    <span className="font-bold text-white">💧 Humidity</span>
+                    <div className="text-right leading-tight">
+                        <div className="text-white">{humidity}%</div>
+                        <small className="text-sm text-white/70">{getHumDescription(humidity)}</small>
+                    </div>
+                </div>
+
+                {/* UV Index */}
+                <div className="flex justify-between items-center">
+                    <span className="font-bold text-white">🔆 UV Index</span>
+                    <div className="text-right leading-tight">
+                        <div className="text-white">{uv}</div>
+                        <small className="text-sm text-white/70">{getUvDescription(uv)}</small>
+                    </div>
+                </div>
+
             </div>
+
         </div>
     );
 };

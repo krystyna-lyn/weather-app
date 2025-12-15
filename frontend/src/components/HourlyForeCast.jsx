@@ -3,7 +3,7 @@ import { parse, format } from 'date-fns';
 
 const HourlyForeCast = ({ data }) => {
 
-    const glassCard = "rounded-2xl border border-white/30 bg-white/10 p-4 shadow-2xl backdrop-blur-xl flex flex-col min-w-[70px] md:min-w-[100px] text-white";
+    const glassCard = "flex flex-col items-center min-w-[90px] md:min-w-[110px] flex-shrink-0 h-[170px] rounded-2xl border border-white/30 bg-white/10 p-4 shadow-2xl backdrop-blur-xl flex flex-col min-w-[70px] md:min-w-[100px] text-white";
 
     return (
         <div className='w-full max-w-200'>
@@ -13,14 +13,17 @@ const HourlyForeCast = ({ data }) => {
                 {data.map((hour, index) => {
 
                     return (
-                        <div className={glassCard} key={index}>
+                        <div className={`${glassCard}`} key={index}>
                             <div className='text-sm md:text-sm mb-2'>
                                 {format(parse(hour.time, 'yyyy-MM-dd HH:mm', new Date()), 'ha')}
                             </div>
-                            <img src={hour.condition.icon} className='w-10 h-10 md:h-12 my-2' alt='icon' />
+                            <div className="h-12 md:h-14 flex items-center justify-center my-2">
+                                <img src={hour.condition.icon}
+                                    className='w-10 h-10 md:w-12 md:h-12 object-contain' alt='icon' />
+                            </div>
                             <div className='text-xs md:text-base font-medium'>{Math.round(hour.temp_c)}°C</div>
 
-                            <div className='text-xs md: mt-1'>💧 {hour.chance_of_rain}%</div>
+                            <div className='text-xs md:mt-1'>💧 {hour.chance_of_rain}%</div>
                         </div>
                     )
                 })}
